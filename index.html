@@ -9,47 +9,91 @@
   </head>
   <body>
     <div class="page">
-      <header class="hero">
-        <div class="hero__heading">
-          <p class="eyebrow">Command Centre</p>
-          <h1>Gus Command Centre</h1>
-          <p class="subtitle">
-            See every active agent, their current focus, and jump into their workspace
-            with a single click.
-          </p>
-        </div>
-        <div class="hero__badge" aria-hidden="true">
-          <span class="badge-icon">🧠</span>
-          <span class="badge-text">Central Control</span>
-        </div>
-      </header>
-
-      <main>
-        <section aria-labelledby="agents-title" class="panel">
-          <div class="panel__header">
+      <div class="app-shell">
+        <aside class="sidebar" aria-label="Primary navigation">
+          <div class="sidebar__logo">
+            <span class="badge-icon">🧠</span>
             <div>
-              <p class="eyebrow">Active agents</p>
-              <h2 id="agents-title">Connected teammates</h2>
-            </div>
-            <button class="ghost" id="add-agent" type="button">
-              ➕ Add agent
-            </button>
-          </div>
-          <div class="agent-grid" id="agent-grid" role="list"></div>
-        </section>
-
-        <section class="panel" aria-live="polite">
-          <div class="panel__header">
-            <div>
-              <p class="eyebrow">Agent details</p>
-              <h2 id="agent-detail-name">Select an agent</h2>
+              <p class="eyebrow">Gus</p>
+              <strong>Command Centre</strong>
             </div>
           </div>
-          <div id="agent-detail" class="agent-detail">
-            <p>Tap an agent card to see their mission, current status, and quick links.</p>
+          <button class="sidebar__btn active" type="button" data-view="agents">
+            Agents
+          </button>
+          <button class="sidebar__btn" type="button" data-view="projects">
+            Projects
+          </button>
+        </aside>
+
+        <div class="workspace">
+          <header class="hero">
+            <div class="hero__heading">
+              <p class="eyebrow">Mission control</p>
+              <h1>Gus Command Centre</h1>
+              <p class="subtitle">
+                Switch between agents and active projects, see who’s on point, and keep every track in view.
+              </p>
+            </div>
+            <div class="hero__badge" aria-hidden="true">
+              <span class="badge-icon">🧭</span>
+              <span class="badge-text">Central Control</span>
+            </div>
+          </header>
+
+          <div class="view-panel is-active" data-panel="agents">
+            <div class="agent-layout">
+              <section aria-labelledby="agents-title" class="panel">
+                <div class="panel__header">
+                  <div>
+                    <p class="eyebrow">Active agents</p>
+                    <h2 id="agents-title">Connected teammates</h2>
+                  </div>
+                  <button class="ghost" id="add-agent" type="button">
+                    ➕ Add agent
+                  </button>
+                </div>
+                <div class="agent-grid" id="agent-grid" role="list"></div>
+              </section>
+
+              <section class="panel" aria-live="polite">
+                <div class="panel__header">
+                  <div>
+                    <p class="eyebrow">Agent details</p>
+                    <h2 id="agent-detail-name">Select an agent</h2>
+                  </div>
+                </div>
+                <div id="agent-detail" class="agent-detail">
+                  <p>Tap an agent card to see their mission, current status, and quick links.</p>
+                </div>
+              </section>
+            </div>
           </div>
-        </section>
-      </main>
+
+          <div class="view-panel" data-panel="projects">
+            <section class="panel">
+              <div class="panel__header">
+                <div>
+                  <p class="eyebrow">Projects desk</p>
+                  <h2>Current initiatives</h2>
+                </div>
+                <button class="ghost" id="add-project" type="button">
+                  ➕ Add project
+                </button>
+              </div>
+              <div id="project-grid" class="project-grid"></div>
+            </section>
+
+            <section class="panel panel--note">
+              <p class="eyebrow">How to use</p>
+              <p>
+                Use this space to capture what each project is about, who is leading it, and the current phase.
+                Everything here is client-side for now, so feel free to add, reorder, or remove as we ideate.
+              </p>
+            </section>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>

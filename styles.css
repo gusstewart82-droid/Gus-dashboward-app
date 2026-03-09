@@ -1,11 +1,12 @@
 :root {
   color-scheme: light dark;
   --surface: rgba(255, 255, 255, 0.9);
-  --surface-dark: rgba(15, 23, 42, 0.8);
+  --surface-dark: rgba(15, 23, 42, 0.85);
+  --sidebar: rgba(15, 23, 42, 0.65);
   --accent: #6c5ce7;
-  --accent-soft: rgba(108, 92, 231, 0.15);
-  --text: #0f172a;
-  --text-muted: #475569;
+  --accent-soft: rgba(108, 92, 231, 0.2);
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
   font-family: "Inter", "SF Pro Display", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
 }
@@ -18,13 +19,62 @@ body {
   margin: 0;
   min-height: 100vh;
   background: radial-gradient(circle at top, #1f2937, #0f172a);
-  color: #f8fafc;
+  color: var(--text);
 }
 
 .page {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 3rem clamp(1rem, 5vw, 2.5rem) 4rem;
+}
+
+.app-shell {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.sidebar {
+  width: 220px;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  background: var(--sidebar);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebar__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar__btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.9rem;
+  padding: 0.65rem 1rem;
+  color: var(--text);
+  text-align: left;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, border 0.2s ease;
+}
+
+.sidebar__btn.active {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.workspace {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .hero {
@@ -32,7 +82,6 @@ body {
   justify-content: space-between;
   align-items: flex-start;
   gap: 2rem;
-  margin-bottom: 2.5rem;
 }
 
 .hero__heading h1 {
@@ -60,18 +109,33 @@ body {
   font-size: 2rem;
 }
 
-main {
+.view-panel {
+  display: none;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.view-panel.is-active {
+  display: flex;
+}
+
+.agent-layout {
   display: grid;
   grid-template-columns: 1.3fr 1fr;
   gap: 1.75rem;
 }
 
 .panel {
-  background: rgba(15, 23, 42, 0.75);
+  background: var(--surface-dark);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1.5rem;
   padding: 1.75rem;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.panel--note {
+  background: rgba(15, 23, 42, 0.55);
+  color: var(--text-muted);
 }
 
 .panel__header {
@@ -109,7 +173,8 @@ main {
 }
 
 .agent-card:hover,
-.agent-card:focus-visible {
+.agent-card:focus-visible,
+.agent-card.active {
   transform: translateY(-4px);
   border-color: var(--accent);
   background: var(--accent-soft);
@@ -172,14 +237,91 @@ main {
 .ghost {
   background: transparent;
   border: 1px dashed rgba(255, 255, 255, 0.4);
-  color: #f8fafc;
+  color: var(--text);
   padding: 0.5rem 1rem;
   border-radius: 0.9rem;
   cursor: pointer;
 }
 
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.project-card {
+  border-radius: 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(15, 23, 42, 0.6);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  position: relative;
+}
+
+.project-card__title {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.project-card__meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.project-card__summary {
+  margin: 0;
+  color: #cbd5f5;
+  font-size: 0.9rem;
+}
+
+.tag {
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  background: rgba(108, 92, 231, 0.2);
+  color: var(--text);
+}
+
+.project-card button {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 2rem 0;
+}
+
+@media (max-width: 1100px) {
+  .app-shell {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .sidebar__btn {
+    flex: 1;
+    text-align: center;
+  }
+}
+
 @media (max-width: 900px) {
-  main {
+  .agent-layout {
     grid-template-columns: 1fr;
   }
 
