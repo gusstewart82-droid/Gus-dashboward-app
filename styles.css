@@ -1,0 +1,189 @@
+:root {
+  color-scheme: light dark;
+  --surface: rgba(255, 255, 255, 0.9);
+  --surface-dark: rgba(15, 23, 42, 0.8);
+  --accent: #6c5ce7;
+  --accent-soft: rgba(108, 92, 231, 0.15);
+  --text: #0f172a;
+  --text-muted: #475569;
+  font-family: "Inter", "SF Pro Display", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1f2937, #0f172a);
+  color: #f8fafc;
+}
+
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem clamp(1rem, 5vw, 2.5rem) 4rem;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.hero__heading h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0.35rem 0;
+}
+
+.hero__heading .subtitle {
+  color: #cbd5f5;
+  max-width: 50ch;
+  margin: 0.35rem 0 0;
+}
+
+.hero__badge {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(15, 23, 42, 0.4);
+}
+
+.badge-icon {
+  font-size: 2rem;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 1.75rem;
+}
+
+.panel {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.5rem;
+  padding: 1.75rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.panel__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+  color: #93c5fd;
+  margin: 0;
+}
+
+.agent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.agent-card {
+  border-radius: 1rem;
+  padding: 1rem;
+  border: 1px solid rgba(108, 92, 231, 0.3);
+  background: rgba(67, 56, 202, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, border 0.2s ease, background 0.2s ease;
+}
+
+.agent-card:hover,
+.agent-card:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.agent-card__icon {
+  font-size: 2rem;
+}
+
+.agent-card__name {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.agent-card__role,
+.agent-card__status {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #cbd5f5;
+}
+
+.agent-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: #dbeafe;
+}
+
+.agent-detail__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(76, 201, 240, 0.15);
+  color: #67e8f9;
+  width: fit-content;
+}
+
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.quick-links a {
+  text-decoration: none;
+  color: #f8fafc;
+  padding: 0.4rem 0.9rem;
+  border-radius: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background 0.2s ease;
+}
+
+.quick-links a:hover,
+.quick-links a:focus-visible {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ghost {
+  background: transparent;
+  border: 1px dashed rgba(255, 255, 255, 0.4);
+  color: #f8fafc;
+  padding: 0.5rem 1rem;
+  border-radius: 0.9rem;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    flex-direction: column;
+  }
+}

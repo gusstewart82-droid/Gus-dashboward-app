@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Gus Command Centre</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div class="hero__heading">
+          <p class="eyebrow">Command Centre</p>
+          <h1>Gus Command Centre</h1>
+          <p class="subtitle">
+            See every active agent, their current focus, and jump into their workspace
+            with a single click.
+          </p>
+        </div>
+        <div class="hero__badge" aria-hidden="true">
+          <span class="badge-icon">🧠</span>
+          <span class="badge-text">Central Control</span>
+        </div>
+      </header>
+
+      <main>
+        <section aria-labelledby="agents-title" class="panel">
+          <div class="panel__header">
+            <div>
+              <p class="eyebrow">Active agents</p>
+              <h2 id="agents-title">Connected teammates</h2>
+            </div>
+            <button class="ghost" id="add-agent" type="button">
+              ➕ Add agent
+            </button>
+          </div>
+          <div class="agent-grid" id="agent-grid" role="list"></div>
+        </section>
+
+        <section class="panel" aria-live="polite">
+          <div class="panel__header">
+            <div>
+              <p class="eyebrow">Agent details</p>
+              <h2 id="agent-detail-name">Select an agent</h2>
+            </div>
+          </div>
+          <div id="agent-detail" class="agent-detail">
+            <p>Tap an agent card to see their mission, current status, and quick links.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
