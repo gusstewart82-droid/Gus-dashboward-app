@@ -100,9 +100,17 @@ body {
   border-radius: 1rem;
   padding: 1rem 1.5rem;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 0.75rem;
   background: rgba(15, 23, 42, 0.4);
+}
+
+.status-pill {
+  font-size: 0.8rem;
+  color: #c7d2fe;
+  background: rgba(30, 41, 59, 0.7);
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
 }
 
 .badge-icon {
@@ -276,6 +284,12 @@ body {
   margin: 0;
   color: #cbd5f5;
   font-size: 0.9rem;
+}
+
+.project-card__timestamp {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.75rem;
 }
 
 .tag {

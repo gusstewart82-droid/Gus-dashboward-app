@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Gus Command Centre</title>
     <link rel="stylesheet" href="styles.css" />
-    <script defer src="app.js"></script>
+    <script type="module" src="app.js"></script>
   </head>
   <body>
     <div class="page">
@@ -35,9 +35,12 @@
                 Switch between agents and active projects, see who’s on point, and keep every track in view.
               </p>
             </div>
-            <div class="hero__badge" aria-hidden="true">
-              <span class="badge-icon">🧭</span>
-              <span class="badge-text">Central Control</span>
+            <div class="hero__badge">
+              <div>
+                <span class="badge-icon">🧭</span>
+                <span class="badge-text">Central Control</span>
+              </div>
+              <div class="status-pill" id="live-status">Connecting…</div>
             </div>
           </header>
 
